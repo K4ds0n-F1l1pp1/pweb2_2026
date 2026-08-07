@@ -15,7 +15,7 @@
                     <option value="#"></option>
                     <option value="nome">Nome</option>
                     <option value="cpf">CPF</option>
-                    <option value="email">E-mail</option>
+                    <option value="telefone">Telefone</option>
                 </select>
             </div>
 
@@ -32,9 +32,8 @@
 </div>
 
 <div class="col">
-    <a href="./userForm.php" class="btn btn-success">Adicionar Novo</a>
+    <a href="{{'aluno/create'}}" class="btn btn-success">Adicionar Novo</a>
 </div>
-
 
 <div class="row">
     <table class="table table-striped table-hover mt-4">
@@ -42,8 +41,8 @@
             <tr>
                 <th scope="col">ID</th>
                 <th scope="col">NOME</th>
+                <th scope="col">CPF</th>
                 <th scope="col">TELEFONE</th>
-                <th scope="col">E-MAIL</th>
                 <th scope="col">AÇÕES</th>
             </tr>
         </thead>
@@ -65,11 +64,11 @@
                         <td>
                             <a href='?action=deleteUser&id=$item->id'
                                 class='btn btn-danger btn-sm'
-                                onclick='return confirm(\"Tem certeza que deseja excluir este usuário?\");'>
+                                onclick='return confirm(\"Tem certeza que deseja excluir este usuário?\")'>
                                 Excluir
                             </a>
                         </td>
-                    </tr>;
+                    </tr>
                 @endforeach
 
         </tbody>

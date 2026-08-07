@@ -11,6 +11,11 @@ class AlunoController extends Controller
     {
         $dados = Aluno::All();
 
-        return view('aluno.list')->with(['dados', $dados]);
+        return view('aluno.list')->with(['dados' => $dados]);
+    }
+
+    function create()
+    {
+        return view('aluno.form');
     }
 }
