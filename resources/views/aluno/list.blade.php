@@ -1,3 +1,7 @@
+@extends('main')
+@section('titulo', 'Listagem de Alunos')
+@section('conteudo')
+
 <div class="row mb-4">
     <div class="col-12">
         <h3>Listagem de Usuários</h3>
@@ -44,34 +48,32 @@
             </tr>
         </thead>
         <tbody>
-            <?php
 
-                foreach ($dados as $item)
-                {
-                    echo "<tr>
-                            <th scope='row'>$item->id</th>
-                            <td>$item->nome</td>
-                            <td>$item->telefone</td>
-                            <td>$item->email</td>
-                            <td>
-                                <a class='btn btn-warning btn-sm'
-                                title='Editar'
-                                href='./userForm.php?id=$item->id'>
-                                Editar
-                                </a>
-                            </td>
-                            <td>
-                                <a href='?action=deleteUser&id=$item->id'
+                @foreach ($dados as $item)
+                    <tr>
+                        <th scope='row'>{{$item->id}}</th>
+                        <td>{{$item->nome}}</td>
+                        <td>{{$item->cpf}}</td>
+                        <td>{{$item->telefone}}</td>
+                        <td>
+                            <a class='btn btn-warning btn-sm'
+                            title='Editar'
+                            href='./userForm.php?id=$item->id'>
+                            Editar
+                            </a>
+                        </td>
+                        <td>
+                            <a href='?action=deleteUser&id=$item->id'
                                 class='btn btn-danger btn-sm'
                                 onclick='return confirm(\"Tem certeza que deseja excluir este usuário?\");'>
                                 Excluir
-                                </a>
-                            </td>
-                        </tr>";
-                }
-
-            ?>
+                            </a>
+                        </td>
+                    </tr>;
+                @endforeach
 
         </tbody>
     </table>
 </div>
+
+@stop

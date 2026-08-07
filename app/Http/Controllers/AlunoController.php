@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+// use Illuminate\Http\Request;
 use App\Models\Aluno;
 
 class AlunoController extends Controller
@@ -11,6 +11,6 @@ class AlunoController extends Controller
     {
         $dados = Aluno::All();
 
-        return view('aluno.list', ['dados', $dados]);
+        return view('aluno.list')->with(['dados', $dados]);
     }
 }
