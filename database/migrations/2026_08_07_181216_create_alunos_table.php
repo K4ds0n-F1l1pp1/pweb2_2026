@@ -7,12 +7,15 @@ use Illuminate\Support\Facades\Schema;
 return new class extends Migration
 {
     /**
-     * Run the migrations.
+     * É onde se cria as tabelas.
      */
     public function up(): void
     {
         Schema::create('alunos', function (Blueprint $table) {
             $table->id();
+            $table->string('nome');
+            $table->string('cpf');
+            $table->string('telefone')->nullable();
             $table->timestamps();
         });
     }

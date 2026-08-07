@@ -12,5 +12,5 @@ class Aluno extends Model
         'nome',
         'cpf',
         'telefone'
-    ]
+    ];
 }
