@@ -54,4 +54,11 @@ class AlunoController extends Controller
 
         return redirect('aluno')->with("success", 'Registro atualizado com sucesso!');
     }
+
+    function destroy($id)
+    {
+        Aluno::destroy($id);
+
+        return redirect('aluno')->with("success", 'Registro removido com sucesso!');
+    }
 }
