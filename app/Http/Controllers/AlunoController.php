@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-// use Illuminate\Http\Request;
+use Illuminate\Http\Request;
 use App\Models\Aluno;
 
 class AlunoController extends Controller
@@ -17,5 +17,10 @@ class AlunoController extends Controller
     function create()
     {
         return view('aluno.form');
+    }
+
+    function store(Request $request)
+    {
+        dd($request->all());
     }
 }
