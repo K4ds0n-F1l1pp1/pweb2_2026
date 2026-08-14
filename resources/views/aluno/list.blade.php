@@ -66,11 +66,13 @@
                                     </a>
                                 </td>
                                 <td style="width: 80px;">
-                                    <a href="?action=deleteUser&id={{ $item->id }}"
-                                       class="btn btn-danger btn-sm"
-                                       onclick="return confirm('Tem certeza que deseja excluir este usuário?')">
+                                    <form action="{{ route(destroy('aluno.destroy', $item->id)) }}" method="POST"></form>
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-danger btn-sm"
+                                       onclick="return confirm('Tem certeza que deseja excluir este usuário?\')">
                                         Excluir
-                                    </a>
+                                    </button>
                                 </td>
                             </tr>
 
