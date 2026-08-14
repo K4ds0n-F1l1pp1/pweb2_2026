@@ -18,4 +18,4 @@ Route::get('/aluno', function () {
 
 Route::get('/aluno', [AlunoController::class, 'index']);
 Route::get('/aluno/create', [AlunoController::class, 'create']);
-Route::get('/aluno/store', [AlunoController::class, 'store']);
+Route::post('/aluno/store', [AlunoController::class, 'store',])->name('aluno.store');

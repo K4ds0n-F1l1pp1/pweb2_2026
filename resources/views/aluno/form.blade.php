@@ -1,49 +1,58 @@
 @extends('main')
-@section('titulo', 'Listagem de Alunos')
+@section('titulo', 'Formulário de Aluno')
 @section('conteudo')
 
-<div class="row">
-    <div class="col">
-        <a href="./userList.php" class="btn btn-success">Voltar</a>
+<div class="container my-4">
+    <!-- Botão Voltar -->
+    <div class="mb-3">
+        <a href="{{ url('aluno') }}" class="btn btn-secondary">Voltar</a>
     </div>
-</div>
 
-<div class="row">
     @php
-        if (!empty($dado->id))
-        {
+        if (!empty($dado->id)) {
             $action = route('aluno.update', $dado->id);
         } else {
             $action = route('aluno.store');
         }
     @endphp
-    <div class="col">
-        <form action="{{ $action }}" method="POST">s
-            @csrf
-            <h3>Formulário de Usuário</h3>
 
-            <input type="hidden" name="id" value="{{ old('id', $data->id ?? '')}}">
+    <!-- Card do Formulário -->
+    <div class="card shadow-sm">
+        <div class="card-body">
+            <h3 class="mb-4">Formulário de Usuário</h3>
 
-            <div class="col-6">
-                <label for="nome">Nome: </label>
-                <input type="text" name="nome" class="form-control" value="{{ old('nome', $data->nome ?? '') }}" maxlength="35" required>
-            </div>
+            <form action="{{ $action }}" method="POST">
+                @csrf
 
-            <div class="col-6">
-                <label for="cpf">CPF: </label>
-                <input type="email" name="cpf" class="form-control" value="{{ old('cpf', $data->cpf ?? '') }}" required>
-            </div>
+                @if (!empty($dado->id))
+                    @method('PUT')
+                @endif
 
-            <div class="col-6">
-                <label for="telefone">Telefone: </label>
-                <input type="text" name="telefone" class="form-control" value="{{ old('telefone', $data->telefone ?? '') }}" required>
-            </div>
+                <input type="hidden" name="id" value="{{ old('id', $dado->id ?? '') }}">
 
-            <div class="col mt-4">
-                <button type="submit" class="btn btn-success">Salvar</button>
-                <a href="./userList.php" class="btn btn-danger">Voltar</a>
-            </div>
-        </form>
+                <div class="row g-3">
+                    <div class="col-md-12">
+                        <label for="nome" class="form-label"><strong>Nome:</strong></label>
+                        <input type="text" name="nome" id="nome" class="form-control" value="{{ old('nome', $dado->nome ?? '') }}" maxlength="35" required>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label for="cpf" class="form-label"><strong>CPF:</strong></label>
+                        <input type="text" name="cpf" id="cpf" class="form-control" value="{{ old('cpf', $dado->cpf ?? '') }}" required>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label for="telefone" class="form-label"><strong>Telefone:</strong></label>
+                        <input type="text" name="telefone" id="telefone" class="form-control" value="{{ old('telefone', $dado->telefone ?? '') }}" required>
+                    </div>
+                </div>
+
+                <div class="mt-4 d-flex gap-2">
+                    <button type="submit" class="btn btn-success">Salvar</button>
+                    <a href="{{ url('aluno') }}" class="btn btn-danger">Cancelar</a>
+                </div>
+            </form>
+        </div>
     </div>
 </div>
 

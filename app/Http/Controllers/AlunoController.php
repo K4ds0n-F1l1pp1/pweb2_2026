@@ -22,5 +22,9 @@ class AlunoController extends Controller
     function store(Request $request)
     {
         dd($request->all());
+
+        Aluno::create($request->all());
+
+        return redirect('aluno')->with("success", 'Registro salvo com sucesso!');
     }
 }
