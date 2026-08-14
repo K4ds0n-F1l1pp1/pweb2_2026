@@ -1,3 +1,7 @@
+@extends('main')
+@section('titulo', 'Listagem de Alunos')
+@section('conteudo')
+
 <div class="row">
     <div class="col">
         <a href="./userList.php" class="btn btn-success">Voltar</a>
@@ -5,25 +9,34 @@
 </div>
 
 <div class="row">
-    <?php actionMessage($success, $errors); ?>
+    @php
+        if (!empty($dado->id))
+        {
+            $action = route('aluno.update', $dado->id);
+        } else {
+            $action = route('aluno.store');
+        }
+    @endphp
     <div class="col">
-        <form action="userForm.php" method="POST">
+        <form action="{{ $action }}" method="POST">s
+            @csrf
+            <h3>Formulário de Usuário</h3>
 
-        <input type="hidden" name="id" value="<?php echo $data->id ?? '' ?>">
+            <input type="hidden" name="id" value="{{ old('id', $data->id ?? '')}}">
 
             <div class="col-6">
                 <label for="nome">Nome: </label>
-                <input type="text" name="nome" class="form-control" value="<?php echo getFormValue($data, 'nome') ?>" maxlength="35" required>
+                <input type="text" name="nome" class="form-control" value="{{ old('nome', $data->nome ?? '') }}" maxlength="35" required>
             </div>
 
             <div class="col-6">
-                <label for="email">E-mail: </label>
-                <input type="email" name="email" class="form-control" value="<?php echo getFormValue($data, 'email') ?>" required>
+                <label for="cpf">CPF: </label>
+                <input type="email" name="cpf" class="form-control" value="{{ old('cpf', $data->cpf ?? '') }}" required>
             </div>
 
             <div class="col-6">
                 <label for="telefone">Telefone: </label>
-                <input type="text" name="telefone" class="form-control" value="<?php echo getFormValue($data, 'telefone') ?>" required>
+                <input type="text" name="telefone" class="form-control" value="{{ old('telefone', $data->telefone ?? '') }}" required>
             </div>
 
             <div class="col mt-4">
@@ -33,3 +46,5 @@
         </form>
     </div>
 </div>
+
+@stop
