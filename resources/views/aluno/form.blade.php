@@ -25,7 +25,7 @@
             <form action="{{ $action }}" method="POST">
                 @csrf
                 @if(!empty($data->id))
-                    @method('PUT');
+                    @method('PUT')
                 @endif
 
                 <input type="hidden" name="id" value="{{ old('id', $data->id ?? '')}}">

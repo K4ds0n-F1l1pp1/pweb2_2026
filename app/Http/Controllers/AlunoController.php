@@ -24,8 +24,9 @@ class AlunoController extends Controller
         $request->validate([
             'nome' => 'required',
             'cpf' => 'required',
-        ], ['nome.required=>"O :attribute é obrigatório!',
-        'cpf.required'=>"O :attribute é obrigatório!"
+        ], [
+            'nome.required=>"O :attribute é obrigatório!',
+            'cpf.required' => "O :attribute é obrigatório!"
         ]);
     }
 
@@ -37,6 +38,12 @@ class AlunoController extends Controller
         Aluno::create($request->all());
 
         return redirect('aluno')->with("success", 'Registro salvo com sucesso!');
+    }
+
+    function edit($id)
+    {
+        $data = Aluno::find($id);
+        return view('aluno.form', compact('data'));
     }
 
     function update(Request $request, $id)
