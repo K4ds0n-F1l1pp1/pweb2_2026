@@ -18,6 +18,7 @@
     <!-- MAIN CONTENT -->
     <main class="container">
         <div class="col-12 col-md-9">
+
             @if(session('success'))
                 <div class="alert alert-success alert-dismissable fade show" role="alert">
                     {{ session('success') }}
@@ -32,6 +33,17 @@
                 </div>
             @endif
         </div>
+
+        @if($errors->any())
+            <div class="alert alert-danger" alert-dismissable fade show" role="alert">
+                <b>Por favor, verifique os erros abaixo:</b>
+                <ul class="mb-0 mt-1">
+                    @foreach ($errors->all() as $error)
+                        <li>{{ error }}</li>
+                    @endforeach
+                </ul>
+        @endif
+
         @yield('conteudo') <!-- Aqui ele chama uma estrutura já feita. -->
     </main>
 
