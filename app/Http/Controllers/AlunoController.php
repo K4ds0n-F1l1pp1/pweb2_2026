@@ -19,9 +19,20 @@ class AlunoController extends Controller
         return view('aluno.form');
     }
 
+    function validationForm(Request $request)
+    {
+        $request->validate([
+            'nome' => 'required',
+            'cpf' => 'required',
+        ], ['nome.required=>"O :attribute é obrigatório!',
+        'cpf.required'=>"O :attribute é obrigatório!"
+        ]);
+    }
+
     function store(Request $request)
     {
-        dd($request->all());
+        // dd($request->all());
+        $this->validationForm($request);
 
         Aluno::create($request->all());
 

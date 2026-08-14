@@ -16,7 +16,22 @@
     </div>
 
     <!-- MAIN CONTENT -->
-    <main>
+    <main class="container">
+        <div class="col-12 col-md-9">
+            @if(session('success'))
+                <div class="alert alert-success alert-dismissable fade show" role="alert">
+                    {{ session('success') }}
+                    <button class="btn-close" data-bs-dismiss="alert" aria-label="Fechar"></button>
+                </div>
+            @endif
+
+            @if(session('error'))
+                <div class="alert alert-danger" alert-dismissable fade show" role="alert">
+                    {{ session('error') }}
+                    <button class="btn-close" data-bs-dismiss="alert" aria-label="Fechar"></button>
+                </div>
+            @endif
+        </div>
         @yield('conteudo') <!-- Aqui ele chama uma estrutura já feita. -->
     </main>
 
