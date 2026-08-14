@@ -61,7 +61,7 @@
                                 <td style="width: 80px;">
                                     <a class="btn btn-warning btn-sm"
                                        title="Editar"
-                                       href="./userForm.php?id={{ $item->id }}">
+                                       href="{{ route('aluno.update', $item->id) }}">
                                         Editar
                                     </a>
                                 </td>

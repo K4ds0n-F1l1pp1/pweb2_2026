@@ -38,4 +38,13 @@ class AlunoController extends Controller
 
         return redirect('aluno')->with("success", 'Registro salvo com sucesso!');
     }
+
+    function update(Request $request, $id)
+    {
+        $this->validationForm($request);
+
+        Aluno::find($id)->update($request->all());
+
+        return redirect('aluno')->with("success", 'Registro atualizado com sucesso!');
+    }
 }

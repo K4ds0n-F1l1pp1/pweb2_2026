@@ -9,9 +9,9 @@
     </div>
 
     @php
-        if (!empty($dado->id))
+        if (!empty($data->id))
         {
-            $action = route('aluno.update', $dado->id);
+            $action = route('aluno.update', $data->id);
         } else {
             $action = route('aluno.store');
         }
@@ -24,23 +24,26 @@
 
             <form action="{{ $action }}" method="POST">
                 @csrf
+                @if(!empty($data->id))
+                    @method('PUT');
+                @endif
 
-                <input type="hidden" name="id" value="{{ old('id', $dado->id ?? '')}}">
+                <input type="hidden" name="id" value="{{ old('id', $data->id ?? '')}}">
 
                 <div class="row g-3">
                     <div class="col-12">
                         <label for="nome" class="form-label"><strong>Nome:</strong></label>
-                        <input type="text" name="nome" id="nome" class="form-control" value="{{ old('nome', $dado->nome ?? '') }}">
+                        <input type="text" name="nome" id="nome" class="form-control" value="{{ old('nome', $data->nome ?? '') }}">
                     </div>
 
                     <div class="col-md-6 col-sm-12">
                         <label for="cpf" class="form-label"><strong>CPF:</strong></label>
-                        <input type="text" name="cpf" id="cpf" class="form-control" value="{{ old('cpf', $dado->cpf ?? '') }}">
+                        <input type="text" name="cpf" id="cpf" class="form-control" value="{{ old('cpf', $data->cpf ?? '') }}">
                     </div>
 
                     <div class="col-md-6 col-sm-12">
                         <label for="telefone" class="form-label"><strong>Telefone:</strong></label>
-                        <input type="text" name="telefone" id="telefone" class="form-control" value="{{ old('telefone', $dado->telefone ?? '') }}">
+                        <input type="text" name="telefone" id="telefone" class="form-control" value="{{ old('telefone', $data->telefone ?? '') }}">
                     </div>
                 </div>
 
