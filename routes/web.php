@@ -22,3 +22,4 @@ Route::post('/aluno/store', [AlunoController::class, 'store'])->name('aluno.stor
 Route::get('/aluno/edit/{id}', [AlunoController::class, 'edit'])->name('aluno.edit');
 Route::put('/aluno/update/{id}', [AlunoController::class, 'update'])->name('aluno.update');
 Route::delete('/aluno/{id}', [AlunoController::class, 'destroy'])->name('aluno.destroy');
+

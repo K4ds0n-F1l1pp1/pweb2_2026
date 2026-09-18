@@ -2,6 +2,9 @@
 
 namespace Database\Seeders;
 
+use App\Models\Curso;
+use App\Models\Matricula;
+use App\Models\Turma;
 use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -18,7 +21,11 @@ class DatabaseSeeder extends Seeder
         // User::factory(10)->create();
 
         $this->call([
+            CategoriaAlunoSeeder::class,
             AlunoSeeder::class,
+            CursoSeeder::class,
+            TurmaSeeder::class,
+            MatriculaSeeder::class,
         ]);
 
         User::factory()->create([

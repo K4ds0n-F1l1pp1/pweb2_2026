@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Aluno;
 use App\Models\Turma;
 use App\Models\Curso;
 use App\Models\Matricula;
@@ -23,6 +24,7 @@ class MatriculaFactory extends Factory
             'numero' => fake()->numerify('MT-######'),
             'curso_id' => (Curso::All()->random())->id,
             'curso_id' => (Turma::All()->random())->id,
+            'aluno_id' => (Aluno::All()->random())->id,
             'data_matricula' => fake()->date(),
         ];
     }

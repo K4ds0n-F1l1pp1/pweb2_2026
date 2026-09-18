@@ -2,64 +2,67 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Curso;
 use Illuminate\Http\Request;
+use App\Models\Curso;
 
 class CursoController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        //
+        $dados = Curso::All();
+
+        return view('Curso.list')->with(['dados' => $dados]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
+    function create()
     {
-        //
+        return view('Curso.form');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
+    function validationForm(Request $request)
     {
-        //
+        $request->validate([
+            'nome' => 'required',
+            'requisito' => 'nullable|string',
+            'carga_horaria' => 'nullable|numeric',
+            'valor' => 'nullable|numeric',
+        ], [
+            'nome.required=>"O :attribute é obrigatório!',
+            'requisito.string' => "O :attribute deve ser caracter :-|",
+            'carga_horaria.numeric'=> "O :attribute deve ser numerico ;^)",
+
+        ]);
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Curso $curso)
+    function store(Request $request)
     {
-        //
+        // dd($request->all());
+        $this->validationForm($request);
+
+        Curso::create($request->all());
+
+        return redirect('Curso')->with(compact('data'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Curso $curso)
+    function edit($id)
     {
-        //
+        $data = Curso::find($id);
+        return view('Curso.form', compact('data'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Curso $curso)
+    function update(Request $request, $id)
     {
-        //
+        $this->validationForm($request);
+
+        Curso::find($id)->update($request->all());
+
+        return redirect('Curso')->with("success", 'Registro atualizado com sucesso!');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Curso $curso)
+    function destroy($id)
     {
-        //
+        Curso::destroy($id);
+
+        return redirect('Curso')->with("success", 'Registro removido com sucesso!');
     }
 }
