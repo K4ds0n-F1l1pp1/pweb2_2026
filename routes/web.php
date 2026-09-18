@@ -23,3 +23,6 @@ Route::get('/aluno/edit/{id}', [AlunoController::class, 'edit'])->name('aluno.ed
 Route::put('/aluno/update/{id}', [AlunoController::class, 'update'])->name('aluno.update');
 Route::delete('/aluno/{id}', [AlunoController::class, 'destroy'])->name('aluno.destroy');
 
+Route::resource('curso', \App\Http\Controllers\CursoController::class);
+Route::resource('turma', \App\Http\Controllers\TurmaController::class);
+Route::resource('matricula', \App\Http\Controllers\MatriculaController::class);
