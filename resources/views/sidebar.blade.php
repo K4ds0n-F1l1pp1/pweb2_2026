@@ -10,13 +10,13 @@
 
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Início</a>
+          <a class="nav-link" href="{{url ('aluno')}}">Aluno</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{{url ('aluno')}}">Link</a>
+          <a class="nav-link" href="{{url ('curso')}}">Curso</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+          <a class="nav-link" href="{{url ('matricula')}}">Matrícula</a>
         </li>
       </ul>
 
