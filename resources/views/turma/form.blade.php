@@ -20,7 +20,7 @@
     <!-- Card do Formulário -->
     <div class="card shadow-sm">
         <div class="card-body">
-            <h3 class="mb-4">Formulário de Cursos</h3>
+            <h3 class="mb-4">Formulário de Turma</h3>
 
             <form action="{{ $action }}" method="POST">
                 @csrf

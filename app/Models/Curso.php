@@ -15,10 +15,17 @@ class Curso extends Model
         'valor',
     ];
     protected $cast =[
-        'categoria_id'=>'intiger'
+        'categoria_id' => 'integer',
+        'valor' => 'float'
     ];
-    public function categoria()
+
+    public function turmas()
     {
-        return $this -> belongTo(categoriaAluno::class,'categoria_id');
+        return $this -> hasMany(Turma::class);
+    }
+
+    public function matriculas()
+    {
+        return $this -> hasMany(Matricula::class);
     }
 }

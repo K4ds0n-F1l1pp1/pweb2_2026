@@ -26,3 +26,30 @@ Route::delete('/aluno/{id}', [AlunoController::class, 'destroy'])->name('aluno.d
 Route::resource('curso', \App\Http\Controllers\CursoController::class);
 Route::resource('turma', \App\Http\Controllers\TurmaController::class);
 Route::resource('matricula', \App\Http\Controllers\MatriculaController::class);
+
+Route::resource('curso', \App\Http\Controllers\CursoController::class);
+Route::post(
+    '/curso/search',
+    [App\Http\Controllers\CursoController::class, 'search']
+)->name('curso.search');
+Route::get(
+    '/curso/{curso}/turmas',
+    [App\Http\Controllers\TurmaController::class, 'index']
+)->name('cursos.turma');
+Route::get(
+    '/curso/{curso}/turmas/create',
+    [App\Http\Controllers\TurmaController::class, 'create']
+)->name('cursos.turma.create');
+
+
+Route::resource('turma', \App\Http\Controllers\TurmaController::class);
+Route::post(
+    '/turma/search',
+    [App\Http\Controllers\TurmaController::class, 'search']
+)->name('turma.search');
+
+Route::resource('matricula', \App\Http\Controllers\MatriculaController::class);
+Route::post(
+    'matricula/search',
+    [\App\Http\Controllers\MatriculaController::class, 'search']
+)->name('matricula.search');
