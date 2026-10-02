@@ -3,7 +3,6 @@
 @section('conteudo')
 
 <div class="container my-4">
-    <!-- Botão Voltar Superior -->
     <div class="mb-3">
         <a href="{{ url('curso') }}" class="btn btn-secondary">Voltar</a>
     </div>
@@ -32,7 +31,7 @@
                 <div class="row g-3">
 
                     <input type="hidden" name="id" value="{{ old('id', $data->id ?? '') }}">
-                    <input type="hidden" name="curso_id" value="{{ 'curso', $isset($dado) ? $dado->curso_id : $curso_id }}">
+                    <input type="hidden" name="curso_id" value="{{ 'curso', $isset($data) ? $data->curso_id : $curso_id }}">
                     <div class="col-12">
                         <label for="nome" class="form-label"><strong>Nome: </strong></label>
                         <input type="text" name="nome" id="nome" class="form-control" value="{{ old('nome', $data->nome ?? '') }}">
@@ -57,7 +56,7 @@
 
                 <div class="mt-4 d-flex gap-2">
                     <button type="submit" class="btn btn-success">Salvar</button>
-                    <a href="{{ url('cursos.turmas', isset($dado) ? $dado->curso_id : $curso_id) }}" class="btn btn-danger">Voltar</a>
+                    <a href="{{ url('cursos.turmas', isset($data) ? $data->curso_id : $curso_id) }}" class="btn btn-danger">Voltar</a>
                 </div>
             </form>
         </div>

@@ -62,14 +62,14 @@ class TurmaController extends Controller
         $data = $request->All();
         $turma = Turma::find($id)->update($data);
 
-        return redirect()->route('curso.turmas', $turma->curso_id)->with("success", 'Registro editado com sucesso!');
+        return redirect()->route('curso.turmas', $request->curso_id)->with("success", 'Registro editado com sucesso!');
     }
 
     public function destroy($id)
     {
         $data = Turma::find($id);
 
-        $data = Turma::delete($id);
+        $data = Turma::destroy($id);
 
         return redirect()->route('curso.turmas', $data->curso_id)->with("success", 'Registro removido com sucesso!');
     }
