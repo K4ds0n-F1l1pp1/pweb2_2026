@@ -53,11 +53,11 @@
                     </div>
 
                     <div class="col-12">
-                        <label for="aluno_id" class="form-label"><strong>Curso:</strong></label>
-                        <select name="aluno_id" class="form-select">
+                        <label for="turma_id" class="form-label"><strong>Curso:</strong></label>
+                        <select name="turma_id" class="form-select">
                             @foreach ($categorias as $item)
                             <option value="{{ $item->id }}">
-                                {{ old('aluno_id', $data->aluno_id ?? '' == $item->id ? 'selected') }}
+                                {{ old('turma_id', $data->turma_id ?? '' == $item->id ? 'selected') }}
                                 {{ $item->nome }}
                             </option>
                             @endforeach
