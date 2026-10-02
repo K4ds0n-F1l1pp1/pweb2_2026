@@ -5,7 +5,7 @@
 <div class="container my-4">
     <div class="row mb-4">
         <div class="col-12">
-            <h3>Listagem de Usuários</h3>
+            <h3>Listagem de Cursos</h3>
         </div>
     </div>
 

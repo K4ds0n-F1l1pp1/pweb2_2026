@@ -1,17 +1,17 @@
 @extends('main')
-@section('titulo', 'Listagem de Alunos')
+@section('titulo', 'Listagem de Cursos')
 @section('conteudo')
 
 <div class="container my-4">
     <div class="row mb-4">
         <div class="col-12">
-            <h3>Listagem de Usuários</h3>
+            <h3>Listagem de Turmas</h3>
         </div>
     </div>
 
     <div class="card shadow-sm mb-4">
         <div class="card-body">
-            <form action="userList.php" method="POST" class="row g-3 align-items-end">
+            <form action="{{ route}}" method="POST" class="row g-3 align-items-end">
                 <div class="col-md-4 col-sm-12">
                     <label for="tipo" class="form-label"><strong>Tipo:</strong></label>
                     <select name="tipo" id="tipo" class="form-control">
@@ -35,7 +35,7 @@
     </div>
 
     <div class="mb-3">
-        <a href="{{ url('aluno/create') }}" class="btn btn-success">Adicionar Novo</a>
+        <a href="{{ url('turma/create') }}" class="btn btn-success">Adicionar Novo</a>
     </div>
 
     <div class="card shadow-sm">
@@ -46,8 +46,9 @@
                         <tr>
                             <th scope="col">ID</th>
                             <th scope="col">NOME</th>
-                            <th scope="col">CPF</th>
-                            <th scope="col">TELEFONE</th>
+                            <th scope="col">CODIGO</th>
+                            <th scope="col">DATA DE INÍCIO</th>
+                            <th scope="col">DATA FINAL</th>
                             <th scope="col" colspan="2" class="text-center">AÇÕES</th>
                         </tr>
                     </thead>
@@ -56,17 +57,21 @@
                             <tr>
                                 <th scope="row">{{ $item->id }}</th>
                                 <td>{{ $item->nome }}</td>
-                                <td>{{ $item->cpf }}</td>
-                                <td>{{ $item->telefone }}</td>
+                                <td>{{ $item->codigo }}</td>
+                                <td>{{ date('d/m/y', strtotime($item->data_inicio)) }}</td>
+                                <td>{{ date('d/m/y', strtotime($item->data_fim)) }}</td>
+                                <td>
+                                    <a></a>
+                                </td>
                                 <td style="width: 80px;">
                                     <a class="btn btn-warning btn-sm"
                                        title="Editar"
-                                       href="{{ route('aluno.edit', $item->id) }}">
+                                       href="{{ route('turma.edit', $item->id) }}">
                                         Editar
                                     </a>
                                 </td>
                                 <td style="width: 80px;">
-                                    <form action="{{ route(destroy('aluno.destroy', $item->id)) }}" method="POST"></form>
+                                    <form action="{{ route(destroy('turma.destroy', $item->id)) }}" method="POST"></form>
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="btn btn-danger btn-sm"
