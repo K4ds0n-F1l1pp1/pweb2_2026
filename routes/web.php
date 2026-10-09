@@ -44,6 +44,14 @@ Route::get(
     '/curso/report',
     [App\Http\Controllers\TurmaController::class, 'report']
 )->name('cursos.report');
+Route::get(
+    '/curso/report-matriculados',
+    [App\Http\Controllers\TurmaController::class, 'reportMatriculados']
+)->name('cursos.reportMatriculados');
+Route::get(
+    '/curso/chart',
+    [App\Http\Controllers\TurmaController::class, 'chart']
+)->name('cursos.chart');
 
 
 Route::resource('turma', \App\Http\Controllers\TurmaController::class);
