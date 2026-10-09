@@ -30,7 +30,7 @@
                             <td>{{ $item->nome }}</td>
                             <td>{{ $item->requisito }}</td>
                             <td>{{ $item->carga_horaria }}</td>
-                            <td>{{ $item->valor }}</td>
+                            <td>R${{ $item->valor }}</td>
                         </tr>
                     @endforeach
                 </tbody>

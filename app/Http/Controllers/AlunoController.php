@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Aluno;
+use Barryvdh\DomPDF\facade\Pdf;
+// use App\Models\Curso;
 
 class AlunoController extends Controller
 {
@@ -60,5 +62,21 @@ class AlunoController extends Controller
         Aluno::destroy($id);
 
         return redirect('aluno')->with("success", 'Registro removido com sucesso!');
+    }
+
+    public function report()
+    {
+        $aluno = Aluno::orderBy('name')->get();
+
+        $data =[
+            'title' => 'Listagem Ultimate de Alunos por Curso',
+            'date' => date('d/m/y'),
+            'dados' => $aluno,
+            'curso' => $aluno->curso,
+        ];
+
+        $pdf = Pdf::loadView('curso.report', $data);
+
+        return $pdf->download('listagem_cursos.pdf');
     }
 }
