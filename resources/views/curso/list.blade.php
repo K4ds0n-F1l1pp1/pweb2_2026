@@ -37,6 +37,7 @@
     <div class="mb-3">
         <a href="{{ url('curso/create') }}" class="btn btn-success">Adicionar Novo</a>
         <a href="{{ url('curso/report') }}" class="btn btn-danger">Relatório</a>
+        <a href="{{ url('curso/chart') }}" class="btn btn-warning">Gráfico</a>
     </div>
 
     <div class="card shadow-sm">
