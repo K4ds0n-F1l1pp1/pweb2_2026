@@ -35,7 +35,12 @@
     </div>
 
     <div class="mb-3">
-        <a href="{{ url('aluno/create') }}" class="btn btn-success">Adicionar Novo</a>
+        <a href="{{ url('curso/create') }}" class="btn btn-success">Adicionar Novo</a>
+        <a class="btn btn-warning btn-sm"
+            title="Relatório"
+            href="{{ route('curso/report') }}">
+            Editar
+        </a>
     </div>
 
     <div class="card shadow-sm">
@@ -61,12 +66,12 @@
                                 <td style="width: 80px;">
                                     <a class="btn btn-warning btn-sm"
                                        title="Editar"
-                                       href="{{ route('aluno.edit', $item->id) }}">
+                                       href="{{ route('curso.edit', $item->id) }}">
                                         Editar
                                     </a>
                                 </td>
                                 <td style="width: 80px;">
-                                    <form action="{{ route(destroy('aluno.destroy', $item->id)) }}" method="POST"></form>
+                                    <form action="{{ route(destroy('curso.destroy', $item->id)) }}" method="POST"></form>
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="btn btn-danger btn-sm"

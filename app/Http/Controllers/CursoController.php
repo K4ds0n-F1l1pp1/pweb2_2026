@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Curso;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class CursoController extends Controller
 {
@@ -64,5 +65,20 @@ class CursoController extends Controller
         Curso::destroy($id);
 
         return redirect('Curso')->with("success", 'Registro removido com sucesso!');
+    }
+
+    public function report()
+    {
+        $cursos = CURSO::orderBy('name')->get();
+
+        $data =[
+            'title' => 'Listagem Ultimate de Cursos',
+            'date' => date('d/m/y'),
+            'dados' => $cursos,
+        ];
+
+        $pdf = Pdf::loadView('curso.report', $data);
+
+        return $pdf->download('listagem_cursos.pdf');
     }
 }

@@ -40,6 +40,10 @@ Route::get(
     '/curso/{curso}/turmas/create',
     [App\Http\Controllers\TurmaController::class, 'create']
 )->name('cursos.turma.create');
+Route::get(
+    '/curso/report',
+    [App\Http\Controllers\TurmaController::class, 'report']
+)->name('cursos.report');
 
 
 Route::resource('turma', \App\Http\Controllers\TurmaController::class);
